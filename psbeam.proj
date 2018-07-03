@@ -2,7 +2,14 @@
 	<ItemGroup>  
   		<Compile Include="psbeam.cs" />  
 	</ItemGroup>
+	<ItemGroup>
+		<References Include="C:\program files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\"/>
+	</ItemGroup>			
 	<Target Name="Build">
-		<Csc TargetType="library" Sources="@(Compile)"/>
+		<Csc TargetType="library" Sources="@(Compile)"
+			TreatWarningsAsErrors="true"
+			WarningLevel="4"
+			AdditionalLibPaths="@(References)"
+			References="System.Management.Automation.dll"/>
 	</Target>
 </Project>  
