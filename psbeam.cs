@@ -2,8 +2,15 @@ using System.Management.Automation;
 
 namespace psbeam
 {
-	public class psbeam
+	[Cmdlet(VerbsCommunications.Send,"Greeting")]
+	public class PsBeam:Cmdlet
 	{
+		[Parameter(Mandatory=true)]
+		public string Name {get; set;}
 
+		protected override void ProcessRecord()
+		{
+			WriteObject($"Hello {Name}!");
+		}
 	}
 }
